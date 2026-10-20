@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fc">
+  <title>Галерея — путешествия</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <header class="intro">
+      <p class="eyebrow">ИСТОРИИ В КАДРАХ</p>
+      <h1>Места, куда<br class="mobile-break"> хочется вернуться</h1>
+    </header>
+
+    <section class="gallery" aria-label="Галерея изображений">
+      <div class="gallery-row">
+        <button class="arrow arrow--prev" type="button" aria-label="Предыдущие изображения" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <div class="viewport">
+          <div class="track" id="gallery-track" aria-live="polite"></div>
+        </div>
+        <button class="arrow arrow--next" type="button" aria-label="Следующие изображения">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+      <div class="gallery-footer">
+        <div class="pagination" id="pagination" aria-label="Индикатор галереи; его можно перетаскивать"></div>
+        <p class="counter"><span id="current-page">01</span><span class="counter-divider">/</span><span id="total-pages">03</span></p>
+      </div>
+    </section>
+
+    <footer class="note"><span class="note-mark" aria-hidden="true">✳</span><span>Вдохновение ближе, чем кажется.</span></footer>
+  </main>
+</body>
+</html>
