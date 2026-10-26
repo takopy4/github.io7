@@ -4,34 +4,94 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f8fc">
-  <title>Галерея — путешествия</title>
+  <title>Места, куда хочется вернуться — фотогалерея</title>
+  <meta name="description" content="Фотогалерея путешествий: неоновый Токио, тихие переулки Киото и синий час на побережье Венеции. Восемь кадров, которые хочется пересматривать.">
+  <meta name="author" content="takopy4">
+
+  <link rel="canonical" href="https://takopy4.github.io/github.io7/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Места, куда хочется вернуться">
+  <meta property="og:title" content="Места, куда хочется вернуться">
+  <meta property="og:description" content="Восемь кадров из Токио, Киото и Венеции — город, свет и немного тишины.">
+  <meta property="og:image" content="https://takopy4.github.io/github.io7/images/tokyo-neon-traveler.webp">
+  <meta property="og:image:width" content="1000">
+  <meta property="og:image:height" content="1250">
+  <meta property="og:image:alt" content="Неоновый Токио — обложка фотогалереи">
+  <meta property="og:url" content="https://takopy4.github.io/github.io7/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Места, куда хочется вернуться">
+  <meta name="twitter:description" content="Восемь кадров из Токио, Киото и Венеции.">
+  <meta name="twitter:image" content="https://takopy4.github.io/github.io7/images/tokyo-neon-traveler.webp">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%233858d6'/><circle cx='32' cy='32' r='15' fill='none' stroke='white' stroke-width='4'/><circle cx='32' cy='32' r='5' fill='white'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="images/tokyo-neon-traveler.webp" fetchpriority="high">
   <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add('js');</script>
   <script src="script.js" defer></script>
 </head>
 <body>
   <main class="page">
     <header class="intro">
+      <p class="eyebrow">Фотогалерея · 2026</p>
       <h1>Места, куда<br class="mobile-break"> хочется вернуться</h1>
+      <p class="lead">Восемь кадров из Токио, Киото и Венеции — город, свет и немного тишины.</p>
     </header>
 
-    <section class="gallery" aria-label="Галерея изображений">
+    <section class="gallery" aria-label="Галерея изображений" aria-roledescription="карусель">
       <div class="gallery-row">
-        <button class="arrow arrow--prev" type="button" aria-label="Предыдущие изображения" disabled>
+        <button class="arrow arrow--prev" type="button" aria-label="Предыдущие изображения" aria-controls="gallery-track" disabled>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
         </button>
         <div class="viewport">
-          <div class="track" id="gallery-track" aria-live="polite"></div>
+          <div class="track" id="gallery-track"></div>
         </div>
-        <button class="arrow arrow--next" type="button" aria-label="Следующие изображения">
+        <button class="arrow arrow--next" type="button" aria-label="Следующие изображения" aria-controls="gallery-track">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
         </button>
       </div>
+
       <div class="gallery-footer">
-        <div class="pagination" id="pagination" aria-label="Индикатор галереи; его можно перетаскивать"></div>
-        <p class="counter"><span id="current-page">01</span><span class="counter-divider">/</span><span id="total-pages">03</span></p>
+        <div class="pagination" id="pagination" role="group" aria-label="Страницы галереи. Можно перетаскивать."></div>
+        <p class="counter" aria-hidden="true">
+          <span class="counter-range">
+            <span id="current-page">01</span><span class="counter-dash">–</span><span id="end-page">03</span>
+          </span>
+          <span class="counter-divider">/</span>
+          <span id="total-pages">08</span>
+        </p>
       </div>
+
+      <p class="sr-only" id="gallery-status" aria-live="polite"></p>
     </section>
 
+    <noscript><p class="noscript-note">Для просмотра галереи включите JavaScript.</p></noscript>
+
+    <footer class="site-footer">
+      <p>Токио · Киото · Венеция</p>
+      <p>© 2026 · <a href="https://github.com/takopy4" target="_blank" rel="noopener noreferrer">takopy4</a></p>
+    </footer>
   </main>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Просмотр фотографии">
+    <div class="lightbox-stage">
+      <button class="lightbox-close" type="button" aria-label="Закрыть просмотр">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+      <button class="lightbox-nav lightbox-prev" type="button" aria-label="Предыдущая фотография">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <figure class="lightbox-figure">
+        <img id="lightbox-image" width="1000" height="1250" alt="">
+        <figcaption id="lightbox-caption" aria-live="polite"></figcaption>
+      </figure>
+      <button class="lightbox-nav lightbox-next" type="button" aria-label="Следующая фотография">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </div>
+  </dialog>
 </body>
 </html>
