@@ -6,61 +6,43 @@
   <meta name="theme-color" content="#f7f8fc">
   <title>Места, куда хочется вернуться — фотогалерея</title>
   <meta name="description" content="Фотогалерея путешествий: неоновый Токио, тихие переулки Киото и синий час на побережье Венеции. Восемь кадров, которые хочется пересматривать.">
-  <meta name="author" content="takopy4">
 
-  <link rel="canonical" href="https://takopy4.github.io/github.io7/">
-
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Места, куда хочется вернуться">
-  <meta property="og:title" content="Места, куда хочется вернуться">
-  <meta property="og:description" content="Восемь кадров из Токио, Киото и Венеции — город, свет и немного тишины.">
-  <meta property="og:image" content="https://takopy4.github.io/github.io7/images/tokyo-neon-traveler.webp">
-  <meta property="og:image:width" content="1000">
-  <meta property="og:image:height" content="1250">
-  <meta property="og:image:alt" content="Неоновый Токио — обложка фотогалереи">
-  <meta property="og:url" content="https://takopy4.github.io/github.io7/">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Места, куда хочется вернуться">
-  <meta name="twitter:description" content="Восемь кадров из Токио, Киото и Венеции.">
-  <meta name="twitter:image" content="https://takopy4.github.io/github.io7/images/tokyo-neon-traveler.webp">
-
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%233858d6'/><circle cx='32' cy='32' r='15' fill='none' stroke='white' stroke-width='4'/><circle cx='32' cy='32' r='5' fill='white'/></svg>">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%233858D6'/%3E%3Ccircle cx='32' cy='32' r='15' fill='none' stroke='white' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='5' fill='white'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="images/tokyo-neon-traveler.webp" fetchpriority="high">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="images/tokyo-neon-traveler.jpg" fetchpriority="high">
   <link rel="stylesheet" href="style.css">
-  <script>document.documentElement.classList.add('js');</script>
   <script src="script.js" defer></script>
 </head>
 <body>
   <main class="page">
     <header class="intro">
       <p class="eyebrow">Фотогалерея · 2026</p>
-      <h1>Места, куда<br class="mobile-break"> хочется вернуться</h1>
-      <p class="lead">Восемь кадров из Токио, Киото и Венеции — город, свет и немного тишины.</p>
+      <h1>Места, куда хочется вернуться</h1>
+      <p class="lead">Восемь кадров из Токио, Киото и Венеции — город, свет и немного тишины. Листайте стрелками или свайпом, открывайте кадры кликом.</p>
     </header>
 
-    <section class="gallery" aria-label="Галерея изображений" aria-roledescription="карусель">
+    <section class="gallery" aria-roledescription="карусель" aria-label="Галерея изображений">
       <div class="gallery-row">
-        <button class="arrow arrow--prev" type="button" aria-label="Предыдущие изображения" aria-controls="gallery-track" disabled>
+        <button class="arrow arrow--prev" type="button" aria-label="Предыдущие изображения" disabled>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
         </button>
-        <div class="viewport">
+
+        <div class="viewport" tabindex="0" aria-label="Лента фотографий: листайте стрелками клавиатуры или свайпом">
           <div class="track" id="gallery-track"></div>
         </div>
-        <button class="arrow arrow--next" type="button" aria-label="Следующие изображения" aria-controls="gallery-track">
+
+        <button class="arrow arrow--next" type="button" aria-label="Следующие изображения">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
         </button>
       </div>
 
       <div class="gallery-footer">
-        <div class="pagination" id="pagination" role="group" aria-label="Страницы галереи. Можно перетаскивать."></div>
+        <div class="dots" id="pagination" role="group" aria-label="Страницы галереи"></div>
         <p class="counter" aria-hidden="true">
-          <span class="counter-range">
-            <span id="current-page">01</span><span class="counter-dash">–</span><span id="end-page">03</span>
-          </span>
-          <span class="counter-divider">/</span>
+          <strong id="current-page">01</strong><span class="counter-dash">–</span><strong id="end-page">03</strong>
+          <span class="divider">/</span>
           <span id="total-pages">08</span>
         </p>
       </div>
@@ -68,7 +50,7 @@
       <p class="sr-only" id="gallery-status" aria-live="polite"></p>
     </section>
 
-    <noscript><p class="noscript-note">Для просмотра галереи включите JavaScript.</p></noscript>
+    <noscript><p class="noscript">Для просмотра галереи включите JavaScript.</p></noscript>
 
     <footer class="site-footer">
       <p>Токио · Киото · Венеция</p>
@@ -77,21 +59,19 @@
   </main>
 
   <dialog class="lightbox" id="lightbox" aria-label="Просмотр фотографии">
-    <div class="lightbox-stage">
-      <button class="lightbox-close" type="button" aria-label="Закрыть просмотр">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
-      </button>
-      <button class="lightbox-nav lightbox-prev" type="button" aria-label="Предыдущая фотография">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
-      </button>
-      <figure class="lightbox-figure">
-        <img id="lightbox-image" width="1000" height="1250" alt="">
-        <figcaption id="lightbox-caption" aria-live="polite"></figcaption>
-      </figure>
-      <button class="lightbox-nav lightbox-next" type="button" aria-label="Следующая фотография">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-      </button>
-    </div>
+    <button class="lb-btn lb-close" type="button" aria-label="Закрыть просмотр">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+    </button>
+    <button class="lb-btn lb-prev" type="button" aria-label="Предыдущая фотография">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <figure class="lightbox-figure">
+      <img id="lightbox-image" alt="">
+      <figcaption id="lightbox-caption" aria-live="polite"></figcaption>
+    </figure>
+    <button class="lb-btn lb-next" type="button" aria-label="Следующая фотография">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
   </dialog>
 </body>
 </html>
